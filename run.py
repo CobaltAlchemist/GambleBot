@@ -4,6 +4,7 @@ import os
 import numpy as np
 import pickle
 import atexit
+import argparse
 from random import choice
 from dataclasses import dataclass
 
@@ -268,6 +269,10 @@ def save_dbs():
 		db.open_event()
 
 if __name__=="__main__":
+	parser = argparse.ArgumentParser(description='Gamble bot runner')
+	parser.add_argument('-k', '--key', help='API Key', default=None)
+	parser.add_argument('--gpu', action='store_true')
+	args = parser.parse_args()
 	#Permossions: 68608
 	#https://discord.com/api/oauth2/authorize?client_id=883520676735094805&permissions=68608&scope=bot%20applications.commands
-	client.run('ODgzNTIwNjc2NzM1MDk0ODA1.YTLIwA.-j5_O95TaTlVVP7CB5QmK_cFly4')
+	client.run(args.key)
